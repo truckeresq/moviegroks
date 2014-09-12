@@ -1,0 +1,30 @@
+<h1>Quotes</h1>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorite_quotes.each do |favorite_quote| %>
+    
+      <tr>
+      <h3><%= link_to favorite_quote.quote, favorite_quote %></h3>
+      <p5>~ <%= favorite_quote.author %></p5>
+        <% if current_user.try(:admin?) %>
+        <td><%= link_to 'Edit', edit_favorite_quote_path(favorite_quote) %></td>
+        <td><%= link_to 'Destroy', favorite_quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <% if current_user.try(:admin?) %>
+<%= link_to 'New Favorite quote', new_favorite_quote_path %>
+<% end %>

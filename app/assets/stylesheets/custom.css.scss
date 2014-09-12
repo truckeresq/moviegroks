@@ -229,6 +229,15 @@ p6 {
   color: #fff;
 }
 
+p.wrap{
+  font-family: "Acrom-Thin";
+  font-size: 1.3em;
+  line-height: 1.1em;
+  margin: 10px 0 5px 15px;
+  width: 200px;
+  text-align: center;
+}
+
 .lead a:hover {
   background-color: $sherbertMedium;
   color: #555;
@@ -739,7 +748,7 @@ p10 {
   margin-top: 10px;
 }
 
-.book {
+.movie {
   margin: 3px 0 0 10px;
 }
 }
@@ -786,6 +795,15 @@ aside {
   }
 }
 
+/* movies */
+
+#movies {
+.col-lg-3:nth-child(4n+1), 
+.col-md-6:nth-child(7n+1){
+  clear:left;
+}
+}
+
 /* themes */
 
 #themes {
@@ -793,54 +811,6 @@ aside {
 .col-md-6:nth-child(7n+1){
   clear:left;
 }
-}
-
-
-/* playlists */
-
-.playlists {
-  list-style: none;
-  margin: 10px 0 0 0;
-
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-
-.playlist-title {
-  display: block;
-  text-align: center;
-  font-size: 1.3em;
-}
-
-.title {
-  display: block;
-  font-size: 1.1em;
-  margin: 5px;
-}
-
-.title a {
-  color: #424141;
-}
-a:hover {
-  color: #555;
-  background-color: #E7E7E7; 
-}
-
-.timestamp {
-  color: $grayLight;
-}
-
-.book {
-  margin-left: 5px;
-}
-
-}
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
 }
 
 /* pagination */

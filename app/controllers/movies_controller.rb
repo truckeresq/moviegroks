@@ -7,7 +7,7 @@ def index
       @movies = Movie.paginate(page: params[:page])
     respond_to do |format|
       format.html
-      format.json { render json: @movies, only: [:id, :title, :movie_image_url, :movie_trailer_url] }
+      format.json { render json: @movies, only: [:id, :year, :title, :movie_image_url, :movie_trailer_url] }
     end
    end
 
@@ -66,7 +66,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
 def movie_params
-     params.require(:movie).permit(:title, :movie_image_url, :movie_trailer_url)
+     params.require(:movie).permit(:title, :movie_image_url, :movie_trailer_url, :year)
 end
 
 def admin_user

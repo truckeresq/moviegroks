@@ -1,0 +1,20 @@
+<div class="row">
+<div id="circle" class="col-xs-2 col-lg-1">1</div>
+<div class="col-xs-10 col-lg-11">
+<div class="toggle-grok" id="btnForm">
+
+    <button type="button" class="btn btn-forms1" data-toggle="collapse" data-target="#toggle-grok-form1"><h7> Add Movie</h7></button>
+
+ 
+    <div id="toggle-grok-form1" class="collapse in">
+  <fieldset>
+     	<div id="scrollable-dropdown-menu">
+      <%= f.collection_select(:movie_id, Movie.all, :id, :title, :name => "grok[movie_attributes][title]") %>
+      </div>
+  </fieldset>
+
+
+  </div>
+  </div>
+  </div>
+  </div>

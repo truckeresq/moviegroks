@@ -6,9 +6,6 @@
                 <%= render "shared/error_messages", object: grok %> 
             <span class="user"><%= link_to gravatar_for(grok.user, size: 55), grok.user %></span>
                 <p1><%= link_to grok.user.display_name, grok.user %>
-                <% if grok.authorship == true %>
-                  <sup id="author">AUTHOR</sup>
-                  <% end %>
             
             <span class="timestamp"><p1>Posted <%= time_ago_in_words(grok.created_at) %> ago.</p1></span>
               </p1><br>
@@ -16,8 +13,8 @@
             <span class="title"><p1><%= grok.title %></p1></span>
               <ul class="media-list">    
                 <li class="media">
-          <div class="book">
-            <span class="pull-left"><%= link_to image_tag(grok.book.small_image_url, alt: grok.book.title + "-" +grok.title, size:"45x65"), grok.book %></span>
+          <div class="movie">
+            <span class="pull-left"><%= link_to image_tag(grok.movie.movie_image_url, size:"45x65" alt: grok.movie.title + "-"), grok.movie %></span>
           </div>
           
           <div class="audio">

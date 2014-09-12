@@ -34,7 +34,7 @@ end
   def new
     @grok = Grok.new
     @grok.build_theme
-    @grok.build_book
+    @grok.build_movie
     respond_to do |format|
       format.html #new.html.erb
       format.json { render json: @grok.errors}
@@ -72,7 +72,7 @@ def uploadFile
         :access_key_id => ENV['access_key_id'],
         :secret_access_key => ENV['secret_access_key'],
         )
-  obj = s3.buckets['bookgroks.test'].objects.create(key, audio, :acl=> :public_read)
+  obj = s3.buckets['moviegroksTest'].objects.create(key, audio, :acl=> :public_read)
   audio_remote_url = obj.public_url().to_s  
   render text: audio_remote_url
 end
@@ -154,7 +154,7 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
   
   def grok_params
-      params.require(:grok).permit(:user_id, :pitch, :authorship, :title, :audio, :audio_remote_url, :processing, :audio_content_type, :audio_file_name, :audio_file_size, theme_attributes: [:id, :keyword], book_attributes: [:id, :title, :isbn, :author, :amazon_url, :small_image_url, :medium_image_url])
+      params.require(:grok).permit(:user_id, :pitch, :authorship, :title, :audio, :audio_remote_url, :processing, :audio_content_type, :audio_file_name, :audio_file_size, theme_attributes: [:id, :keyword], movie_attributes: [:id, :title, :movie_image_url, :movie_trailer_url])
   end
 
   def signed_in_user

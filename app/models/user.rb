@@ -12,7 +12,6 @@ include CustomSlugs
 		has_one	 :profile, :inverse_of => :user, :dependent => :destroy
 		accepts_nested_attributes_for :profile, update_only: true
 		has_many :groks, :dependent => :delete_all
-		has_many :playlists, dependent: :destroy
 		has_many :likes, through: :groks
 
 		before_create { generate_token(:auth_token) }

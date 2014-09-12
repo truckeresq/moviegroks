@@ -1,19 +1,21 @@
 <title><%= full_title(yield(:title)) %></title>
 <h1>Movies</h1>
 <br>
- <% @movies.each_slice(3) do |movies| %>
-    <div class="row">
+ <% @movies.each_slice(4) do |movies| %>
+    <div class="row" id="movies">
     <% movies.each do |movie| %>
-     <div class="col-sm-4 col-md-4 col-lg-2">
-        <%= link_to image_tag(movie.movie_image_url, size:"105x155"), movie %>
-          <h3>Groks</h3>
-      	<h3 class="text"><%= movie.groks.count %></h3>
-        <br>
-      
+     <div class="col-md-6 col-lg-3">
+        <%= link_to image_tag(movie.movie_image_url, size:"225x315"), movie %><br>
+        <p class="wrap"><%= movie.title %> (<%= movie.year %>)</p>
+
+        <p>Groks <%= movie.groks.count %></p>
           <% if signed_in? && current_user.admin? %>
             <span><%= link_to 'Delete', {:action => 'destroy', :id => movie.id}, method: :delete, data: {confirm: 'Are you sure you want to permanently delete this movie?'} %></span>
           <% end %>
+<br>
+          
         </div> 
+        
       <% end %>
       </div> 
   <% end %>

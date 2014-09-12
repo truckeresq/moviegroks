@@ -1,0 +1,17 @@
+<title><%= full_title(yield(:title)) %></title>
+<br>
+<p id="notice"><%= notice %></p>
+<div id="showQuote">
+<div class= "container">
+</div>
+<div id="fav_quote">
+<div id="contain_quote">
+<h3><%= @favorite_quotes.quote %></h3>
+
+<div id="fav_quote_author">
+<p5>~ <%= @favorite_quotes.movie %>(<%= @favorite_quotes.year %>)</p5>
+</div>
+</div></div>
+<br>
+</div>
+<%= link_to 'Back', favorite_quotes_path %>

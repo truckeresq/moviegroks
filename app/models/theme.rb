@@ -1,7 +1,7 @@
 class Theme < ActiveRecord::Base
 include CustomSlugs
 		has_many :groks
-		has_many :books
+		has_many :movies
 		validates :keyword, 
 			:presence => true, 
 			:length => {:within => 4..25},

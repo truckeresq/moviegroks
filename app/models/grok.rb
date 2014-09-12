@@ -24,16 +24,16 @@ class Grok < ActiveRecord::Base
 		# ensures that a user_id is present
 		validates_presence_of :user
 
-		belongs_to :book, inverse_of: :groks, autosave: true
+		belongs_to :movie, inverse_of: :groks, autosave: true
 
 		belongs_to :theme, inverse_of: :groks, autosave: true
 		
 		has_and_belongs_to_many :playlists
 		
 		accepts_nested_attributes_for :theme, :reject_if => :reject_attrs, :update_only => true, :allow_destroy => true
-		accepts_nested_attributes_for :book, :reject_if => :reject_attrs, :update_only => true
+		accepts_nested_attributes_for :movie, :reject_if => :reject_attrs, :update_only => true
 		
-		before_save validates_associated :theme, :book
+		before_save validates_associated :theme, :movie
 		after_create :download_remote_audio
     	
     
@@ -63,12 +63,12 @@ class Grok < ActiveRecord::Base
 			rescue			
 		end
 
-		def book_attributes
-			book.try(:title)
+		def movie_attributes
+			movie.try(:title)
 		end
 
-		def book_attributes=(title)
-			self.book = Book.find_or_create_by(title)
+		def movie_attributes=(title)
+			self.movie = Movie.find_or_create_by(title)
 		end
 
 
@@ -97,7 +97,7 @@ class Grok < ActiveRecord::Base
          		:access_key_id => ENV['access_key_id'],
 	 			:secret_access_key => ENV['secret_access_key']
        )
-      		obj = s3.buckets['bookgroks.test/uploads'].objects[audio_file_name]
+      		obj = s3.buckets['moviegroksTest/uploads'].objects[audio_file_name]
       		obj.delete 
       		puts obj
 		end
