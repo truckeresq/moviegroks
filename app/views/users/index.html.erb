@@ -1,0 +1,19 @@
+<title><%= full_title(yield(:title)) %></title>
+<h1>Users</h1>
+<br>
+	<ul>
+		<%= will_paginate %>
+	</ul>
+<% @users.each_slice(3) do |users| %>
+	<div class="row">
+		<% users.each do |user| %>
+		<div id="users"></div>
+<%= render partial: "user", locals: { user: user} %>
+  		<% end %>
+		</div>
+<% end %> 
+
+<ul>
+	<%= will_paginate %>
+</ul>
+

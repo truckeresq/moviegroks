@@ -1,0 +1,8 @@
+<h1>Favorites</h1>
+<span class="divider"></span>
+<ol class="groks">
+<% @user.favs.each do |grok|  %>
+<%= render :partial => 'groks/grok', :locals => {:user => @user, :grok => grok} %>
+<% end %>
+</ol>
+</div>

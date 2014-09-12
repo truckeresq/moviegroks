@@ -1,0 +1,13 @@
+<% if signed_in? && current_user.voted_for?(grok) %>
+       <%= link_to '<span class="glyphicon glyphicon-heart icon-danger"></span>'.html_safe, unvote_for_grok_path(grok), :method => :delete, :remote => true, class: "btn btn-default-heart btn-lg pull-right", :id => "unvote_for" %>
+  	<% else %>
+        <%= link_to '<span class="glyphicon glyphicon-heart custom"><span>'.html_safe, vote_for_grok_path(grok), :method => :post, :remote => true, class: "btn btn-default-heart btn-lg pull-right",  :id => "vote_for" %>
+<% end %>
+
+<br><br>
+<div class="total_votes">
+<% if grok.votes_for() %>
+    <h6 class="text-right"><%= grok.votes_for %> <%= "like".pluralize(grok.votes_for) %> 
+    </h6>
+<% end %>
+</div>

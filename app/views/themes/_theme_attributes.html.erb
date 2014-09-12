@@ -1,0 +1,17 @@
+<div class="row">
+<div id="circle" class="col-xs-2 col-lg-1">2</div>
+<div class="col-xs-10 col-lg-11">
+<div class="toggle-grok" id="btnForm">
+    <button type="button" class="btn btn-forms2" data-toggle="collapse" data-target="#toggle-grok-form2"><h7>Add Theme</h7></button>
+ 
+    <div id="toggle-grok-form2" class="collapse in">
+    <fieldset>	
+	<div id="scrollable-dropdown-menu" class"theme">
+		<%= f.text_field(:keyword, class: "theme-typeahead", autocomplete: "off", :placeholder => "Select a theme", :name => "grok[theme_attributes][keyword]")%>
+	</div>
+</fieldset>
+</div>
+</div>
+</div>
+</div>
+<br>

@@ -1,0 +1,13 @@
+<title><%= full_title(yield(:title)) %></title>
+<% if @grok.audio_remote_url !=nil %>
+<div id="showQuote">
+  		<%= render partial: 'processing_audio', locals: {:favorite_quotes => @favorite_quotes} %>
+  		</div>
+		
+ <% else %>
+		<div id="showGrok">
+			<div class="row">	
+			<%= render partial: 'grok', locals: {:grok => @grok} %>
+ 			</div>
+		</div>		
+<% end %>

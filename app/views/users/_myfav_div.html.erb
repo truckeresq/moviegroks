@@ -1,0 +1,4 @@
+<%= link_to user_favs_path(:user_id => @user.id), remote: true, class: "btn btn-default-heart" do %>
+  	<span class="glyphicon glyphicon-heart icon-danger"></span>
+  <% end %>
+  	<p><span class="badge"><%= @user.vote_count() %></span></p>

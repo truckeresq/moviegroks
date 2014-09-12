@@ -1,0 +1,3 @@
+<% if (!@grok.audio_remote_url) == true %>
+$('#showGrok').html('<%= j(render :partial => 'grok', locals: {grok: @grok}) %>');
+<% end %>

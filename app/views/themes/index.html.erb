@@ -1,0 +1,21 @@
+<title><%= full_title(yield(:title)) %></title>
+<h1>Themes</h1>
+<br>
+      <% @themes.each_slice(4) do |themes| %>
+        <div class="row">
+      <% themes.each do |theme| %>   
+        <div id="theme_div"></div>
+        <%= render partial: "theme", locals: { theme: theme} %>
+
+      <% end %>
+        </div>
+        
+      <% end %>
+
+<br>
+<ul>
+<%= will_paginate @themes %>
+</ul>
+ <% if current_user.try(:admin?) %>
+<%= link_to 'Add New', new_theme_path %>
+<% end %>

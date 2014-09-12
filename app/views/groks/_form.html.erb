@@ -1,0 +1,39 @@
+<%= form_for @grok do |f| %>
+ <% if @grok.errors.any? %>
+   <%= render partial: => 'shared/error_messages' %>
+<p>Select Book</p>
+  <div id="scrollable-dropdown-menu">
+    <input class="typeahead" type="text" placeholder="Title, Author, ISBN">
+  </div>
+
+  <div id="scrollable-dropdown-menu">
+    <input type="button" input class="amz-button" value="Search on Amazon">
+  </div>
+
+<% end %>
+
+ 
+<p>Choose Theme</p>
+  <div id="scrollable-dropdown-menu">
+    <input class="theme-typeahead" type="text" placeholder="Select a theme">
+  </div>
+
+
+
+     
+    <%= f.text_area_tag(:title, option = {:placeholder => "Share the a'ha moments of the books you love in <140 characters or less.", size: "10X5"}) %>
+    
+
+    <%= render "record_audio" %>
+
+     
+    
+
+    <% end %>
+     
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    <% end %>
+
+

@@ -1,0 +1,13 @@
+development:
+access_key_id: 'AKIAIETGYIMGV6JTSYKQ'
+secret_access_key: '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'
+bucket: 'moviegroksTest'
+
+smtp_password: 'TruckerESQ@21'
+
+production:
+access_key_id: 'AKIAIETGYIMGV6JTSYKQ'
+secret_access_key: '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'
+bucket: 'moviegroks2014'
+
+smtp_password: 'TruckerESQ@21'

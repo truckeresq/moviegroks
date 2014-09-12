@@ -1,0 +1,27 @@
+<title><%= full_title(yield(:title)) %></title>
+<br>
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class=" col-sm-4 col-md-2">
+		<img src="<%= @movie.movie_image_url %>" width="105" height="155" class="" border="0" alt="Medium Movie"/></br>
+		<a href="<%= @book.movie_trailer_url %>"><font color="#6CA7E1"><strong>Watch trailer on</font></strong><font color="F28846"> YouTube</font></a><span class="glyphicon glyphicon-share-alt btn-lg"></span>
+</br>
+
+</div>
+
+<div class=" col-sm-12 col-md-8">
+  <div class="row">
+  
+          <div class="groks">
+          <div id = "grok_div"></div>
+          <%= render @movie.groks %>
+          </div>
+      <%= will_paginate @groks %>
+      
+</div>
+</div>
+</div>
+
+<%= link_to 'Back', movies_path %>
+
+

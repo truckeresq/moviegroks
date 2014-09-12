@@ -1,0 +1,16 @@
+ <div class ="row">
+      <div class="span6 offset3">
+        <%= form_for(@movie, remote: true) do |f| %>
+        <% if @movie.errors.any? %>
+<%= render "shared/error_messages", object: f.object %>
+  
+<%= render "movies/addmovie" %>
+<div class="actions">
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+</div>
+
+</div>
+</div>
+
+<% end %>
+<% end %>

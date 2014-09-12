@@ -1,0 +1,18 @@
+<title><%= full_title(yield(:title)) %></title>
+ <h1>Groks</h1>
+ <br>
+    <ul>
+      <%= will_paginate %>
+    </ul>
+    <% @groks.each_slice(2) do |groks| %>
+        <div class="row">
+    <% groks.each do |grok| %>
+        <div id="grok_div"></div>
+    <%= render partial: "grok", locals: { grok: grok} %>
+    <% end %>
+      </div>
+  <% end %> 
+
+  <ul>
+    <%= will_paginate %>
+  </ul>

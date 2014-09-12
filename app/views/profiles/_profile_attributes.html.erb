@@ -1,0 +1,8 @@
+      <fieldset>
+      <%= f.label :city, "City" %><br />
+      <%= f.text_field(:city, :name => "user[profile_attributes][city]") %>
+      <%= f.label :state, "State" %><br />
+      <%= f.text_field(:state, :name => "user[profile_attributes][state]") %>
+      <%= f.label :website, "Website" %><br />
+      <%= f.text_field(:website, :name => "user[profile_attributes][website]") %>
+      </fieldset>

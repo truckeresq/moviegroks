@@ -1,0 +1,1 @@
+	$('#grok<%= grok.id %> .likes').empty().append("<%= escape_javascript(render :partial => 'groks/like_buttons', locals: {grok: grok}, :id => 'vote_for') %>");

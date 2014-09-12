@@ -1,0 +1,9 @@
+<h1>Editing profile</h1>
+
+<%= render 'form' %>
+
+<% if profile.changeable_by?(current_user) %>
+  <li class="actions">
+    <%= link_to 'Edit', edit_profile_url(profile) %>
+  </li>
+<% end %>

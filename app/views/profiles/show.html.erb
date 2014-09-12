@@ -1,0 +1,38 @@
+<% provide(:title, @user.name) %>
+<h1><%= @user.name %></h1>
+
+<div id = "profile">
+<%= image_tag user.image %>
+<strong>Name</strong>
+	<%= user.first_name %>
+	<%= user.last_name %>
+<strong>Location</strong>
+<p>
+  <strong>City:</strong>
+  <%= @profile.city, @profile.state %>
+</p>
+<p> Grokking since <%= user.join_date %></p>
+<p>
+  <strong>Website:</strong>
+  <%= @profile.website %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+
+<%# TODO Show profile partial on User show page%>
+
+<%#Show votables count. Image above is heart.%>
+
+<!-- <div class = "count">
+	<% = user.groks.count%>
+	<% = user.playlists.count%>
+	<% = user.votables.count%>
+</div> -->
+<% end %>
+</div>

@@ -1,0 +1,13 @@
+<%= link_to('<< Back to Movie', {:action => 'new'}, :class => 'back-link') %>
+
+<%= form_for(@movie, :url => {:action => :update, :id => @movie.id}) do |f| %>
+<%= render(:partial => 'form', :locals => {:f => f}) %>  
+<% end %>
+
+
+<%= link_to 'Index', movies_path %>
+
+
+
+
+    	

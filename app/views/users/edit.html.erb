@@ -1,0 +1,38 @@
+<title><%= full_title(yield(:title)) %></title>
+<h1>Update your profile</h1>
+<div class ="row">
+    <div class="span6 offset3">
+       <div class="container">
+    <%= form_for(@user) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+
+
+      <%= f.fields_for :profile do |profile_attributes| %>
+       <%= render :partial => 'profiles/profile_attributes', :locals => {f: profile_attributes} %>
+      <% end %>
+   
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+<%= gravatar_for(@user) %>
+<a href="http://gravatar.com/emails">change image</a>
+<br>
+
+<%= link_to "Show", user_path(@user) %> |
+<%= link_to "Index", users_path %>

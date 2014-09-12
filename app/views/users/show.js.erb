@@ -1,0 +1,7 @@
+$('#groks').append('<%= j render(@groks) %>');
+<% if @groks.next_page %>
+	$('.pagination').replaceWith('<%= j will_paginate(@groks) %>');
+	<% else %>
+	$('.pagination').remove();
+	<% end %>
+	<% sleep 1 %>

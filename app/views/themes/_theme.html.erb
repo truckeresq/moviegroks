@@ -1,0 +1,9 @@
+<div class="col-md-6 col-lg-3" id="theme">
+<p><%= link_to theme.keyword, {:action => 'show', :id => theme.id} %></p>
+       
+      <% if current_user.try(:admin?) %>
+        <tr><p5><%= link_to 'Edit', {:action => 'edit', :id => theme.id} %> |
+        <%= link_to "Delete", theme, method: :delete,
+                      data: { confirm: "Are you sure?" } %></p5></tr>
+       <% end %>
+</div>

@@ -1,0 +1,58 @@
+<div class="col-sm-6 col-md-6 col-lg-6" id="groks">
+  <ul class="groks">
+        <div id="panel" class="panel panel-default">  
+            <span class="theme"><h1><%= link_to grok.theme.keyword, grok.theme %></h1></span>   
+                <li id="grok<%= grok.id %>">
+                <%= render "shared/error_messages", object: grok %> 
+            <span class="user"><%= link_to gravatar_for(grok.user, size: 55), grok.user %></span>
+                <p1><%= link_to grok.user.display_name, grok.user %>
+                <% if grok.authorship == true %>
+                  <sup id="author">AUTHOR</sup>
+                  <% end %>
+            
+            <span class="timestamp"><p1>Posted <%= time_ago_in_words(grok.created_at) %> ago.</p1></span>
+              </p1><br>
+          
+            <span class="title"><p1><%= grok.title %></p1></span>
+              <ul class="media-list">    
+                <li class="media">
+          <div class="book">
+            <span class="pull-left"><%= link_to image_tag(grok.book.small_image_url, alt: grok.book.title + "-" +grok.title, size:"45x65"), grok.book %></span>
+          </div>
+          
+          <div class="audio">
+                <% if grok.audio.exists? %>    
+                  <audio id="myAudio" class="player" controls="true" oncanplaythrough="console.log('Can play through audio without stopping')" preload="none">
+                      <%= audio_tag(grok.audio.url + grok.created_at.to_s) %>
+                        <source src= <%= grok.audio.url %> type="audio/wav">
+                        <source src= <%= grok.audio.url %> id="source" type="audio/mpeg"> 
+                        <p>Your browser does not support playback.</p>
+                  </audio>  
+                <% end %>
+          </div> 
+            
+              
+            <div class="likes">
+                  <%= render :partial => 'groks/like_buttons', locals: {user: @user, grok: grok} %>
+            </div>
+            
+                
+
+              </li> 
+          </ul>
+
+      </li>
+
+    </div>
+  </ul>
+
+    <div class="actions">
+        <% if signed_in? && (current_user?(grok.user) || current_user.admin?) %>
+        <%= link_to "delete", grok, method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+        <% end %>
+
+    </div> 
+    <%= render partial: "shared/grok_dropup", locals: { grok: grok} %> 
+     
+  </div>

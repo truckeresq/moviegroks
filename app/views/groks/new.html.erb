@@ -1,0 +1,44 @@
+<title><%= full_title(yield(:title)) %></title>
+
+<div id="grok_errors"></div>
+
+<h1 rel="popover" id="grokpop" data-container="body" data-toggle="popover" data-placement="top" data-content="Audio currently works with Firefox and Chrome. Internet Explorer coming soon.">Add new Grok</h1>
+<br>
+
+    <%= form_for(@grok, remote: true, html: {:multipart => true, :id => 'new-grok-form'}) do |f| %>
+        <%= render "shared/error_messages", object: f.object %> 
+
+    <%= f.fields_for :books do |book_attributes| %>
+      <%= render :partial => 'books/book_attributes', :locals => {f: book_attributes} %>
+    <% end %>
+
+<fieldset>
+  <div class="authorship">
+    <p><%= label_tag :authorship, "Are you the author?" %></p>
+    <%= f.check_box(:authorship, :name => "grok[authorship]", :id => "authorship") %>
+    <div id="author_message" style="display: none">By checking this box, you confirm that you're the author of the selected book.</div>
+    </div>
+  </fieldset>
+  <br>
+    
+    <%= f.fields_for :themes do |theme_attributes| %>
+      <%= render :partial => 'themes/theme_attributes', :locals => {f: theme_attributes} %>
+    <% end %>
+
+    <%= render :partial => 'grok_title', :locals => {f: f} %><br>
+
+    <div id="grok_audio_div"></div>
+    <div id="success_div"></div>
+
+    <%= render :partial => 'record_audio' %>
+    <div id="counter"><h2><span id="secs" /></h2></div><br>
+  
+
+    <div id="grok_errors" style="display:none" class="errors"></div>
+    
+    <p class="text-center"><a href="#" name="new-grok-form" class="btn btn-primary" onclick="$(this).closest('form').submit();return false;">Create Grok</a> 
+        <a href="/">Cancel</a></p>
+
+
+
+<% end %>

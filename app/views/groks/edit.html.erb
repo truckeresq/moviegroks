@@ -1,0 +1,13 @@
+<title><%= full_title(yield(:title)) %></title>
+	<div id="grok_errors"></div>
+		<%= form_for(@grok, remote: true, html: {:multipart => true}) do |f| %>
+<%= render "shared/error_messages", object: f.object %> 
+	<div class="row">
+<%= render partial: 'grok', locals: {:grok => @grok} %>
+<%= f.submit 'Update' %>
+</div>
+</div>
+<% end %>
+<br>
+	<%= link_to 'Back', groks_path %> |
+	<%= link_to 'Show', @grok %> 

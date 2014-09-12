@@ -1,0 +1,22 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+      <%= f.label :city, "City" %><br />
+      <%= f.text_field(:city, :name => "city") %>
+      <%= f.label :state, "State" %><br />
+      <%= f.text_field(:state, :name => "state") %>
+      <%= f.label :website, "Website" %><br />
+      <%= f.text_field(:website, :name => "website") %>
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+   <% end %>

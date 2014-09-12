@@ -1,0 +1,1 @@
+json.(@movie, :id, :movie_image_url, :title)

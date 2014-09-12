@@ -1,0 +1,268 @@
+<html>
+  <body>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc1.min.js"></script>
+ 
+  <div class="row">
+<div id="circle" class="col-xs-2 col-lg-1">4</div>
+<div class="col-xs-10 col-lg-11">
+  <div class="toggle-grok" id="btnForm">
+    <button type="button" class="btn btn-forms4" data-toggle="collapse" data-target="#toggle-grok-form4"><h7>Record Audio</h7></button>
+ 
+    <div id="toggle-grok-form4" class="collapse in">
+    <audio controls autoplay></audio>
+    <style type='text/css'>
+    </style>
+   
+    <%= javascript_include_tag("recorder.js") %>
+  
+    <div class="btn-group btn-group-justified">
+      <div class="btn-group">
+     
+   <!--  <input onclick="startRecording()" type="button" class="btn btn-danger" value="start recording" id="startID"/>
+     </div> -->
+  
+    <a tabindex="0" id="startID" href="#/" class="btn-audio btn-danger btn-lg" onclick="startRecording()" value="start recording" data-toggle="popover" data-content="Don't forget to grant access to your microphone after pressing the record button."><span class="glyphicon glyphicon-record"></span> Start Recording</a>
+
+  </div>
+   <div class="btn-group">
+   <!--  <input onclick="stopRecording()" type="button" class="btn btn-success" value="stop recording and play" id="stopID"/>
+  </div> -->
+<a tabindex="0" id="stopID" href="#/" class="btn-audio btn-success btn-lg" onclick="stopRecording()" data-toggle="popover" value="stop recording and play">
+  <span class="glyphicon glyphicon-stop"></span> Stop and Playback</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <script>
+
+
+
+// //Fix Firefox
+// context = new AudioContext();
+
+// navigator.getUserMedia({ audio: true }, function(stream) {
+//   // the important thing is to save a reference to the MediaStreamAudioSourceNode
+//   // thus, *window*.source or any other object reference will do
+//   window.source = context.createMediaStreamSource(stream);
+//   source.connect(context.destination);
+// }, alert);
+
+
+
+///Fix Firefox end
+
+      var onFail = function(e) {
+        console.log('Rejected!', e);
+      };
+
+  
+     var onSuccess = function(s) {
+     var context = new AudioContext;
+     console.log('Audio context set up.');
+     console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
+     var mediaStreamSource = context.createMediaStreamSource(s);
+     window.source = mediaStreamSource;
+     //source.connect(context.destination);
+          recorder = new Recorder(mediaStreamSource);
+            recorder.record();
+          }
+
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+     navigator.getUserMedia =  navigator.getUserMedia ||
+     navigator.webkitGetUserMedia ||
+     navigator.mozGetUserMedia ||
+     navigator.msGetUserMedia;
+     window.URL = window.URL || window.webkitURL;
+     
+
+      var recorder;
+      var audio = document.querySelector('audio');
+
+
+      function startRecording() {
+          if (window.URL) {
+          navigator.getUserMedia({audio: true}, onSuccess, onFail);
+        } else {
+          audio.src = stream
+          console.log('navigator.getUserMedia not present');
+        }
+      }
+
+
+      function stopRecording() {
+        recorder.stop();
+        recorder.exportWAV(function(s) {
+          audio.src = window.URL.createObjectURL(s);
+            sendWaveToGrok(s);
+        });
+      }
+
+      this.start = function () {
+        clearInterval(timer);
+        timer = 30;
+        seconds = options.seconds;
+        timer = setInterval(decrementCounter, 1000);
+      };
+
+      this.stop = function () {
+        clearInterval(timer); 
+      };
+
+  //     function sendWaveToGrok(blob) {
+          
+  //           var data = new FormData; 
+  //            data.append("audio", blob, (new Date()).getTime() + ".wav");
+  //            var oReq = new XMLHttpRequest();
+
+   
+  //   $.ajax({
+  //       url: '/groks/uploadFile',
+  //       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+  //       data: data,
+  //       contentType: false,
+  //       processData: false,
+  //       type: 'POST',
+  //       success: function(response, status, request){
+  //           console.log(blob);
+  //       }
+  //   });
+  // }
+
+
+// START USING CONTROLLER TO SEND TO AWS
+    function sendWaveToGrok(blob) {
+            var data = new FormData; 
+            var key = 'uploads/'+("audio", blob, (new Date()).getTime() + ".wav");
+            var audio = blob;
+            var filename = ("audio", blob, (new Date()).getTime() + ".wav");
+            var url = 'https://s3.amazonaws.com/bookgroks.test/' + key;
+
+            function updateProgress(evt) 
+                {
+                   if (evt.lengthComputable) 
+                   {  //evt.loaded the bytes browser receive
+                      //evt.total the total bytes seted by the header
+                      //
+                     var percentComplete = (evt.loaded / evt.total)*100;  
+                     $('#progressbar').progressbar( "option", "value", percentComplete );
+                     console.log(evt);
+                   } 
+                }
+
+            var xhr = new XMLHttpRequest();
+
+            data.append('key', key);
+            //data.append('acl', 'public-read');
+            data.append('Content-Type', blob.type);
+            data.append('policy', '<%= s3_upload_policy %>');
+            data.append('signature', '<%= s3_upload_signature %>');
+            data.append('audio', blob, key);
+   
+    $.ajax({
+        url: '/groks/uploadFile',
+        data: data,
+        //dataType: 'XML',
+        contentType: false,
+        processData: false,
+        type: 'POST',  
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+             
+
+        success: function(response, status, request){
+           
+            console.log(blob);
+            // console.log(url);
+            console.log(blob.type);
+            console.log(blob.size);
+            // console.log(filename);
+        
+
+            $('#startID').click(function(){
+              $('#grok_audio_div').empty();
+              resetEverything();
+            });
+
+            var div = document.createElement('div');
+            grok_audio_div.setAttribute('style', 'margin-bottom: 70px');
+
+            var input1 = document.createElement('input');
+            input1.setAttribute('type', 'hidden');
+            input1.setAttribute('name', 'grok[audio_remote_url]');
+            input1.setAttribute('value', url);
+            div.appendChild(input1);
+            grok_audio_div.appendChild(div);
+
+            var input2 = document.createElement('input');
+            input2.setAttribute('type', 'hidden');
+            input2.setAttribute('name', 'grok[audio_file_name]');
+            input2.setAttribute('value', filename);
+            div.appendChild(input2);
+            grok_audio_div.appendChild(div);
+
+          
+            var input3 = document.createElement('input');
+            input3.setAttribute('type', 'hidden');
+            input3.setAttribute('name', 'grok[audio_content_type]');
+            input3.setAttribute('value', blob.type);
+            div.appendChild(input3);
+            grok_audio_div.appendChild(div);
+
+          
+            var input4 = document.createElement('input');
+            input4.setAttribute('type', 'hidden');
+            input4.setAttribute('name', 'grok[audio_file_size]');
+            input4.setAttribute('value', blob.size);
+            div.appendChild(input4);
+            grok_audio_div.appendChild(div);
+          
+
+            var span = document.createElement('span');
+            span.id = 'success_div';
+            span.className = 'glyphicon glyphicon-ok-circle btn-lg pull-right';
+            span.innerHTML = '<p10>Audio</p10><p10>saved!</p10>'
+            grok_audio_div.appendChild(span);
+
+        }
+     
+    });
+  }
+
+// END 
+      var count;
+      var counter;
+
+      function resetEverything() {
+        $('#counter').hide();
+        $('#startID').show();
+        $('#stopID').hide();
+        clearInterval(counter);
+      } 
+
+      $(document).ready(function() {
+        resetEverything();
+        $('#startID').click(function() {
+          $('#startID').hide();
+          $('#stopID').show();
+          $('#counter').animate({width: 'toggle'});
+            count=31;
+            counter=setInterval(timer, 1000);
+            function timer(){
+              count=count-1;
+              if (count <= 0){
+                recorder.stop();
+                clearInterval(counter);
+                return;
+              }
+            document.getElementById('secs').innerHTML=count +" secs remaining.";}
+        });
+      $('#stopID').click(function() {
+          resetEverything();
+        });
+      });
+
+        </script>
+      </body>
+    </html>
+

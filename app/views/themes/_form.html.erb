@@ -1,0 +1,12 @@
+<form class="form-inline" role="form" 
+      <%= form_for(@theme) do |f| %>
+   <%= render "shared/error_messages", object: f.object %> 
+   
+   <div class="form-group">
+    <%= f.label :keyword %>
+    <%= f.text_area :keyword %>
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <a href="/">Cancel</a>
+   </div>
+<% end %>
+</form>
