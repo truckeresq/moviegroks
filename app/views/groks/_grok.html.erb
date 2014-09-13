@@ -4,20 +4,16 @@
             <span class="theme"><h1><%= link_to grok.theme.keyword, grok.theme %></h1></span>   
                 <li id="grok<%= grok.id %>">
                 <%= render "shared/error_messages", object: grok %> 
-            <span class="user"><%= link_to gravatar_for(grok.user, size: 55), grok.user %></span>
-                <p1><%= link_to grok.user.display_name, grok.user %>
-            
-            <span class="timestamp"><p1>Posted <%= time_ago_in_words(grok.created_at) %> ago.</p1></span>
-              </p1><br>
-          
-            <span class="title"><p1><%= grok.title %></p1></span>
+                 <div class="movie">
+                <span class="center"><%= link_to image_tag(grok.movie.movie_image_url, size:"145x215", alt: grok.movie.title + "-"), grok.movie %></span>
+                </div>
+           
+          <span class="title"><p1><i class="fa fa-quote-left"></i> <%= grok.title %> <i class="fa fa-quote-right"></i> </p1></span>
+  
               <ul class="media-list">    
                 <li class="media">
-          <div class="movie">
-            <span class="pull-left"><%= link_to image_tag(grok.movie.movie_image_url, size:"45x65" alt: grok.movie.title + "-"), grok.movie %></span>
-          </div>
-          
-          <div class="audio">
+            
+               <div class="audio">
                 <% if grok.audio.exists? %>    
                   <audio id="myAudio" class="player" controls="true" oncanplaythrough="console.log('Can play through audio without stopping')" preload="none">
                       <%= audio_tag(grok.audio.url + grok.created_at.to_s) %>
@@ -27,14 +23,7 @@
                   </audio>  
                 <% end %>
           </div> 
-            
-              
-            <div class="likes">
-                  <%= render :partial => 'groks/like_buttons', locals: {user: @user, grok: grok} %>
-            </div>
-            
-                
-
+      
               </li> 
           </ul>
 

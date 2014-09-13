@@ -27,8 +27,7 @@ class Grok < ActiveRecord::Base
 		belongs_to :movie, inverse_of: :groks, autosave: true
 
 		belongs_to :theme, inverse_of: :groks, autosave: true
-		
-		has_and_belongs_to_many :playlists
+	
 		
 		accepts_nested_attributes_for :theme, :reject_if => :reject_attrs, :update_only => true, :allow_destroy => true
 		accepts_nested_attributes_for :movie, :reject_if => :reject_attrs, :update_only => true

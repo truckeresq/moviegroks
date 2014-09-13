@@ -1,6 +1,6 @@
 <title><%= full_title(yield(:title)) %></title>
 <h1>Sign In</h1>
-
+<br>
 <form class="form-inline" role="form" 
 	<%= form_tag(:action => 'attempt_signin')  do %>
 			<div class="form-group">
@@ -22,7 +22,4 @@
 			</div>
 				</div>
 	<% end %>
-	<div class="form-group">
-			<p>Not yet a member? <%= link_to "Sign up now!", signup_path %>
-		</div>
 </form>

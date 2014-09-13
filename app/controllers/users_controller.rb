@@ -126,7 +126,7 @@ end
     redirect_to_good_slug(@user) and return if bad_slug?(@user)
     # @playlists = @user.playlists.paginate(page: params[:page])
     @groks = @user.groks.paginate(page: params[:page])
-    @user.favs
+    # @user.favs
   end
 
 

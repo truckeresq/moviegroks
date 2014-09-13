@@ -38,21 +38,6 @@
     <script>
 
 
-
-// //Fix Firefox
-// context = new AudioContext();
-
-// navigator.getUserMedia({ audio: true }, function(stream) {
-//   // the important thing is to save a reference to the MediaStreamAudioSourceNode
-//   // thus, *window*.source or any other object reference will do
-//   window.source = context.createMediaStreamSource(stream);
-//   source.connect(context.destination);
-// }, alert);
-
-
-
-///Fix Firefox end
-
       var onFail = function(e) {
         console.log('Rejected!', e);
       };
@@ -110,28 +95,6 @@
         clearInterval(timer); 
       };
 
-  //     function sendWaveToGrok(blob) {
-          
-  //           var data = new FormData; 
-  //            data.append("audio", blob, (new Date()).getTime() + ".wav");
-  //            var oReq = new XMLHttpRequest();
-
-   
-  //   $.ajax({
-  //       url: '/groks/uploadFile',
-  //       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-  //       data: data,
-  //       contentType: false,
-  //       processData: false,
-  //       type: 'POST',
-  //       success: function(response, status, request){
-  //           console.log(blob);
-  //       }
-  //   });
-  // }
-
-
-// START USING CONTROLLER TO SEND TO AWS
     function sendWaveToGrok(blob) {
             var data = new FormData; 
             var key = 'uploads/'+("audio", blob, (new Date()).getTime() + ".wav");
@@ -173,10 +136,8 @@
         success: function(response, status, request){
            
             console.log(blob);
-            // console.log(url);
             console.log(blob.type);
             console.log(blob.size);
-            // console.log(filename);
         
 
             $('#startID').click(function(){

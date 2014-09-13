@@ -11,30 +11,20 @@
 					<% else %>
 					<p><span class="none"><i>City, State</i></span></p>
 					<% end %>
-					<p class="text-left">Grokking since: <%= @user.created_at.year %></p>
-					<% if @user.profile.present? %>
-					<p class="text-left"><%= link_to(@user.profile.website, "http://#{@user.profile.website}", :target => 'blank') %></p>
-					<% else %>
-					<p><span class="none"><i>website</i></span>
-					<% end %>
-				</table>
-			</span>
+					</table>
+				</span>
 		
 <div class="row">
   		<div class="col-xs-6 col-md-6">		
   					<% if @user.groks.any? %>
   							<h5><%= link_to "Grok".pluralize(@user.groks.count), user_grok_path(:user_id => @user.id), remote: true %> </h5>
   						
-  						<P><span class="badge"><%= @user.groks.count %></span></P>
+  						<p><span class="badge"><%= @user.groks.count %></span></p>
   							<% end %>
   		</div>
 
-  		<div id="user_favs" class="col-xs-6 col-md-6">
-			<% if @user.votes.any? %>
-  				<%= render partial: "myfav_div" %>
-			<% end %>
-		
-  		</div>
+  	
 </div>
-</div>	
+
+ </div>	
 </div>

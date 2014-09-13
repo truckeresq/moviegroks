@@ -4,8 +4,8 @@
       </button>
           <ul class="dropdown-menu" role="menu">
               <li><%= link_to "Share on Facebook", "http://www.facebook.com/sharer.php?u=" + (URI.parse(root_url) + grok_path(grok)).to_s, :target => :blank %></li>
-               <li><%= link_to "Share on Twitter", "http://twitter.com/share?url=#{(URI.parse(root_url)+grok_path(grok)).to_s}&hashtags=bookgroks", :target => :blank %></li>
-               <li><%= link_to "Share on Pinterest", "http://pinterest.com/pin/create/button/" + "?url=" + (URI.parse(root_url) + grok_path(grok)).to_s + "&media=" + grok.book.small_image_url + "&description=" + grok.title, { :target => :blank, data: { pin_do: "linkPin", pin_config: "none"}} %></li>
+               <li><%= link_to "Share on Twitter", "http://twitter.com/share?url=#{(URI.parse(root_url)+grok_path(grok)).to_s}&hashtags=moviegroks", :target => :blank %></li>
+               <li><%= link_to "Share on Pinterest", "http://pinterest.com/pin/create/button/" + "?url=" + (URI.parse(root_url) + grok_path(grok)).to_s + "&media=" + grok.movie.movie_image_url + "&description=" + grok.title, { :target => :blank, data: { pin_do: "linkPin", pin_config: "none"}} %></li>
                <li><%= link_to "Copy Link", (URI.parse(root_url) + grok_path(grok)).to_s %></li>
           </ul>
       </div> 

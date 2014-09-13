@@ -1,8 +1,7 @@
 class ThemesController < ApplicationController
   before_action :set_theme, :only => [:edit, :update, :destroy]
   before_action :confirm_signed_in, :only => [:new, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: [:new, :destroy]
+  before_action :admin_user, only: [:new, :edit, :update, :destroy]
   
   # GET /themes
   # GET /themes.json
@@ -93,8 +92,4 @@ def destroy
       redirect_to(root_url) unless current_user.admin?
     end
 
-   def correct_user
-      @theme = current_user.themes.find_by(id: params[:id])
-      redirect_to root_url if @theme.nil?
-  end
 end

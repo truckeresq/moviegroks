@@ -4,7 +4,7 @@
  <% @movies.each_slice(4) do |movies| %>
     <div class="row" id="movies">
     <% movies.each do |movie| %>
-     <div class="col-md-6 col-lg-3">
+     <div class="col-sm-6 col-md-6 col-lg-3">
         <%= link_to image_tag(movie.movie_image_url, size:"225x315"), movie %><br>
         <p class="wrap"><%= movie.title %> (<%= movie.year %>)</p>
 

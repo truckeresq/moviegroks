@@ -13,19 +13,19 @@ MovieGroks::Application.routes.draw do
 
    match 'signin', to: 'access#signin', via: [:get, :post]
    match 'signout', to: 'access#signout', via: 'delete'
-   match '/signup', to: 'users#new', via: [:get, :post]
 
-  resources :groks, :profiles, :users, :notifiers, :themes, :movies
+  resources :groks, :profiles, :users, :notifiers, :themes, :movies, :favorite_quotes
 
-  resources :groks do
-    member do
-      post 'vote_for'
-      delete 'unvote_for'
-    end
-  end
+  # resources :groks do
+  #   member do
+  #     post 'vote_for'
+  #     delete 'unvote_for'
+  #   end
+  # end
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
   
+  get 'user_grok' => 'users#user_grok'
   get 'processing_audio' => 'groks#processing_audio'
 
 
