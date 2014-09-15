@@ -587,7 +587,7 @@ font-family: Acrom;
 }
 
 .btn-primary:hover {
-  color: #481818;
+  color: #2A2739;
   font-weight: bold;
   background-color: #CFC22F;
   border-color: #fff;
@@ -789,6 +789,14 @@ aside {
 .col-md-6:nth-child(7n+1){
   clear:left;
 }
+}
+
+p.movie_summary {
+  font-size: 11px;
+  background-color: lighten(#CFC22F, 10%);
+  width: 225px;
+  padding: 15px;
+  text-align: justify;
 }
 
 /* themes */

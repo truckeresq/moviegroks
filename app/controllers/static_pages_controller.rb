@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
  
   def home
-    @groks = Grok.most_voted.sort_by { |grok| grok.votes.size }.reverse
+    @groks = Grok.where(created_at: (Time.now - 120.day)..Time.now)
   end
 
   def about

@@ -3,6 +3,13 @@
   <h1>Moviegroks</h1>
 <h3>Because Good Stories Teach and Inspire</h3>
 <%= link_to "Learn More", about_path, class: "btn btn-learnmore" %>
-
- 
 </div>
+
+<br>
+<% @groks.each_slice(2) do |groks| %>
+<div class="row">
+<% groks.each do |grok| %>
+<%= render partial: "groks/grok", locals: { grok: grok} %>
+<% end %>
+</div>
+<% end %>

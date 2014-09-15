@@ -1,13 +1,28 @@
-<%= link_to('<< Back to Movie', {:action => 'new'}, :class => 'back-link') %>
+<title><%= full_title(yield(:title)) %></title>
+<h1>Update Movie</h1>
+<div class ="row">
+    <div class="span6 offset3">
+       <div class="container">
+    <%= form_for(@movie) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
 
-<%= form_for(@movie, :url => {:action => :update, :id => @movie.id}) do |f| %>
-<%= render(:partial => 'form', :locals => {:f => f}) %>  
-<% end %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
 
+      <%= f.label :summary %>
+      <%= f.text_field :summary %>
 
+      <%= f.label :year %>
+      <%= f.text_field :year %>
+
+      <%= f.label :movie_image_url %>
+      <%= f.text_field :movie_image_url %>
+
+      <%= f.label :movie_trailer_url %>
+      <%= f.text_field :movie_trailer_url %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+<br>
 <%= link_to 'Index', movies_path %>
-
-
-
-
-    	

@@ -13,7 +13,6 @@ def index
 
 def new
    @movie = Movie.new
-   @movies = Movie.sorted
 end
 
 # def search
@@ -46,6 +45,17 @@ end
      @movie = Movie.find(params[:id])
   end
 
+ # PATCH/PUT /themes/1
+  # PATCH/PUT /themes/1.json
+def update
+    @movie = Movie.find(params[:id])
+      if @movie.update(movie_params)
+        redirect_to @movie, notice: 'Movie was successfully updated.'
+      else
+        render 'edit', notice: "You aren't authorized to perform this action."
+    end
+end
+
   # DESTROY /themes/1
   # DESTROY /themes/1.json
 
@@ -66,7 +76,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
 def movie_params
-     params.require(:movie).permit(:title, :movie_image_url, :movie_trailer_url, :year)
+     params.require(:movie).permit(:title, :summary, :movie_image_url, :movie_trailer_url, :year)
 end
 
 def admin_user
