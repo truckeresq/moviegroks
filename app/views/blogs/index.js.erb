@@ -1,0 +1,7 @@
+$('#blog').append('<%= j render(@blogs) %>');
+<% if @blogs.next_page %>
+	$('.pagination').replaceWith('<%= j will_paginate(@blogs) %>');
+	<% else %>
+	$('.pagination').remove();
+	<% end %>
+	<% sleep 1 %>

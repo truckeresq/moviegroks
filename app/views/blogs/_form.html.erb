@@ -1,0 +1,13 @@
+<form class="form-inline" role="form" 
+      <%= form_for(@blog, :html=> {:multipart => true}) do |f| %>
+   <%= render "shared/error_messages", object: f.object %> 
+   
+   <div class="form-group">
+    <%= f.label :post %>
+    <%= f.text_area :post %>
+    <%= render :partial => 'movie_attributes', :locals => {f: f} %> 
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <a href="/">Cancel</a>
+   </div>
+<% end %>
+</form>

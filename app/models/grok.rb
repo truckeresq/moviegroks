@@ -35,16 +35,6 @@ class Grok < ActiveRecord::Base
 		before_save validates_associated :theme, :movie
 		after_create :download_remote_audio
     	
-    
-		#after_create :show_final_errors
-
-		def show_final_errors
-			if audio.blank?
-				self.errors.add(:base, "Forget to record your audio?")
-				raise ActiveRecord::RecordInvalid.new(self)
-			end
-			true
-		end
 
 		acts_as_voteable
 
@@ -69,8 +59,7 @@ class Grok < ActiveRecord::Base
 		def movie_attributes=(title)
 			self.movie = Movie.find_or_create_by(title)
 		end
-
-
+		
 		def before(job)
 			self.processing = true
 		end

@@ -1,0 +1,11 @@
+<div class="blog">
+        <br>
+<p1> Week of <%= blog.created_at.to_date.to_formatted_s :long_ordinal %> </p1>
+      <p class="<%= cycle('first', 'second', 'third') %>"><%= link_to blog.post, blog %></p>
+      	<% blog.movies.each do |m| %>
+		<p1>#<%= link_to m.title, m %><%= "," unless m ==  blog.movies.last %></p1>
+			<% end %>
+</div>
+          <% if signed_in? && current_user.admin? %>
+          <span><%= link_to 'Edit', edit_blog_path(blog) %> | <%= link_to 'Delete', {:action => 'destroy', :id => blog.id}, method: :delete, data: {confirm: 'Are you sure you want to permanently delete this post?'} %></span>
+          <% end %>

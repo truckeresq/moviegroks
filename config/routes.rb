@@ -10,18 +10,13 @@ MovieGroks::Application.routes.draw do
    get 'terms' => 'static_pages#terms'
    get 'privacy' => 'static_pages#privacy'
    get 'contact' => 'static_pages#contact'
+   get 'index' => 'access#index'
 
    match 'signin', to: 'access#signin', via: [:get, :post]
    match 'signout', to: 'access#signout', via: 'delete'
 
-  resources :groks, :profiles, :users, :notifiers, :themes, :movies, :favorite_quotes
+  resources :groks, :profiles, :users, :notifiers, :themes, :movies, :blogs, :favorite_quotes
 
-  # resources :groks do
-  #   member do
-  #     post 'vote_for'
-  #     delete 'unvote_for'
-  #   end
-  # end
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
   

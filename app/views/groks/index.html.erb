@@ -1,18 +1,32 @@
 <title><%= full_title(yield(:title)) %></title>
  <h1>Groks</h1>
  <br>
-    <ul>
-      <%= will_paginate %>
-    </ul>
-    <% @groks.each_slice(2) do |groks| %>
+ <div class="row">
+    <div class="col-md-8">
+        <ul>
+         <%= will_paginate %>
+        </ul>
+        <% @groks.each_slice(2) do |groks| %>
         <div class="row">
-    <% groks.each do |grok| %>
+          <% groks.each do |grok| %>
         <div id="grok_div"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6" id="groks">
     <%= render partial: "grok", locals: { grok: grok} %>
+    </div>
     <% end %>
-      </div>
+        </div>
   <% end %> 
 
   <ul>
     <%= will_paginate %>
   </ul>
+  </div>
+    <div class="col-md-4">
+      <p>Want the latest Moviegroks? Follow us on Pinterest.</p>
+      <a data-pin-do="embedBoard" href="http://www.pinterest.com/swigswag/moviegroks/" data-pin-scale-width="80" data-pin-scale-height="320" data-pin-board-width="400"></a>
+      <!-- Please call pinit.js only once per page -->
+    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+      <br>
+      <!-- <p>Reserved space</p> -->
+  </div>
+</div>

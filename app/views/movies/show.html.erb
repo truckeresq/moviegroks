@@ -7,22 +7,22 @@
 		<a href="<%= @movie.movie_trailer_url %>"><font color="#3CBBC9"><strong>Watch trailer on</font></strong><font color="#F73F31"> YouTube</font></a><span class="glyphicon glyphicon-share-alt btn-lg"></span>
 
 </br>
-
 </div>
 
-<div class=" col-sm-12 col-md-8">
-  <div class="row">
-  
-          <div class="groks">
-          <div id = "grok_div"></div>
+  <div class="col-sm-6 col-md-6 col-lg-6" id="groks">
           <%= render @movie.groks %>
-          </div>
+        
       <%= will_paginate @groks %>
       
 </div>
+<div class="col-sm-12 col-md-4 col-lg-2">
+		<p class="pitch">Got another 30 seconds? Listen to more <%=link_to "Moviegroks.", groks_path %></p>
 </div>
+
 </div>
+
 
 <%= link_to 'Back', movies_path %>
 
 
+ 

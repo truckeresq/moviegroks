@@ -194,7 +194,7 @@ p2 {
   font-family: "Acrom";
   font-size: .8em;
   line-height: .5em;
-  color: #fff;
+  color: #F6F6F6;
   margin-top: 30px;
 }
 
@@ -211,7 +211,7 @@ p4 {
   font-size: 1.1em;
   line-height: 1em;
   letter-spacing: .5px;
-  color: #fff;
+  color: #F6F6F6;
 }
 
 p5 {
@@ -237,7 +237,7 @@ p6 {
   font-size: 1.1em;
   line-height: 1em;
   letter-spacing: .5px;
-  color: #fff;
+  color: #F6F6F6;
 }
 
 p.wrap{
@@ -269,7 +269,7 @@ tr td:first-child {
 	float: left;
 	margin:30px 10px 10px 0;
 	font-size: 1.7em;
-	color: #fff;
+	color: #F6F6F6;
 	text-transform: uppercase;
 	letter-spacing: -1px;
 	padding-top: 10px;
@@ -278,7 +278,7 @@ tr td:first-child {
 }
 
 #logo:hover {
-	color: #fff;
+	color: #F6F6F6;
 	text-decoration: none;
 }
 
@@ -394,7 +394,7 @@ float: right!important;
   height:40em;
   border-radius:50%;
   font-size:14px;
-  color:#fff;
+  color:#F6F6F6;
   line-height: 18px;
   background:#424141;
   margin: 0 auto;
@@ -417,7 +417,7 @@ h3 {
   text-align: right;
   margin: 0 auto;
   width: 30em;
-  color: #fff; 
+  color: #F6F6F6; 
 }
 .container #favquotes p6 {
   margin-top: 10px;
@@ -444,7 +444,7 @@ background-color: #481818;
   text-align: justify;
   margin: 0 auto;
   width: 30em;
-  color: #fff;
+  color: #F6F6F6;
 h3 {
   font-family: "Acrom-Thin";
   font-size: 1.6em;
@@ -456,7 +456,7 @@ h3 {
   text-align: right;
   margin: 0 auto;
   width: 30em;
-  color: #fff; 
+  color: #F6F6F6; 
 }
 .container #favquotes p6 {
   margin-top: 10px;
@@ -465,7 +465,7 @@ h3 {
   font-size: 1.1em;
   line-height: 1em;
   letter-spacing: .5px;
-  color: #fff;
+  color: #F6F6F6;
   float: right;
 }
 }
@@ -485,7 +485,7 @@ h3 {
   height:45px;
   border-radius:50%;
   font-size:25px;
-  color:#fff;
+  color:#F6F6F6;
   line-height:45px;
   text-align:center;
   background:#2A2739;
@@ -683,7 +683,7 @@ p10 {
 }
 
 #panel {
-  height: 450px;
+  height: 460px;
   width: 100%;
   padding-bottom: 2%;
 }
@@ -744,7 +744,7 @@ p10 {
   width: 51.5%;
   display: inline;
   height: 50px;
-  margin: 0 0 0 5px;
+  margin: -15px 0 0 5px;
   padding-right: 0;
 }
 
@@ -785,18 +785,67 @@ aside {
 /* movies */
 
 #movies {
-.col-lg-3:nth-child(4n+1), 
-.col-md-6:nth-child(7n+1){
+.col-lg-4:nth-child(5n+1), 
+.col-md-4:nth-child(5n+1){
   clear:left;
 }
 }
-
 p.movie_summary {
   font-size: 11px;
   background-color: lighten(#CFC22F, 10%);
   width: 225px;
   padding: 15px;
   text-align: justify;
+}
+
+#ads {
+  margin-left: 140px;
+  padding-right: 20px;
+.col-lg-3:nth-child(4n+1), 
+.col-md-4:nth-child(5n+1){
+  clear:left;
+}
+}
+
+p.pitch {
+  background-color: lighten(#CFC22F, 10%);
+  padding: 15px;
+  text-align: center;
+  color: #F73F31;
+}
+
+/* blog */
+
+#blog {
+.col-lg-6:nth-child(4n+1), 
+.col-md-3:nth-child(7n+1){
+  clear:left;
+}
+}
+
+.blog {
+  p.first {font-size: 16px; text-align: justify; padding:15px; background-color: lighten(#3CBBC9, 5%)};
+  p.second {font-size: 16px; text-align: justify; padding:15px; background-color: lighten(#2A2739, 35%)};
+  p.third {font-size: 16px; text-align: justify; padding:15px; background-color: lighten(#F73F31, 5%)};
+}
+
+h3.post {
+  font-size: 16px; 
+  line-height: 1.6;
+  text-align: justify;
+  margin: 10px 0 20px 40px; 
+  padding: 15px;
+  background-color: lighten(#2A2739, 30%);
+  color: #F6F6F6;
+}
+
+#post p {
+  font-size: 1.8em;
+  font-weight: bold;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+  color: lighten(#F73F31, 3%);
+  width: 100%;
 }
 
 /* themes */
