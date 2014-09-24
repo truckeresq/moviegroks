@@ -5,7 +5,9 @@
 		<% @user.groks.each_slice(4) do |groks| %>
 		<div class="row">
 			<% groks.each do |grok| %>
+			<div class="col-sm-6 col-md-6 col-lg-6" id="groks">
 			<%= render :partial => 'groks/grok', locals: { grok: grok} %> 
+			</div>
 			<% end %>
 		</div>
 			<% end %>
