@@ -2,10 +2,10 @@
 <h1>Check out this week's new movies</h1>
 <br>
  <% @blogs.each_slice(3) do |blogs| %>
-    <div class="row" id="blog">
+    <div class="row">
     <% blogs.each do |blog| %>
     <div id="blog_div"></div>
-     <div class="col-md-4 col-lg-6">
+     <div class="col-md-4 col-lg-4" id="blog">
        
         <%= render blog %>
 <br>
