@@ -3,12 +3,15 @@
 <p class="center"> Week of <%= @blog.created_at.to_date.to_formatted_s :long_ordinal %> </p>
 </div>
 	<h3 class="post"><%= @blog.post %></h3>
+	<div class="row">
 	<% @blog.movies.each do |movie| %>
      		<div class="col-md-4 col-lg-4" id="blog">
+     		<div id="groks"> 
          		 <%= render movie.groks %>
          	</div>
+         	</div>
 		<% end %>
-
+	</div>
 <br>
 <%= link_to 'Back', blogs_path %><br>
  <% if current_user.try(:admin?) %>
