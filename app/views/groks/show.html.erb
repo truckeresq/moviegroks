@@ -6,9 +6,11 @@
 		
  <% else %>
 		<div id="showGrok">
-			<!-- <div class="row">	 -->
-			<div class="col-sm-6 col-md-6 col-lg-6" id="groks">
+			<div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-6" id="groks">
 			<%= render partial: 'grok', locals: {:grok => @grok} %>
+ 				</div>
  			</div>
-		</div>		
+			
 <% end %>
+</div>	
