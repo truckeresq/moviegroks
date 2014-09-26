@@ -4,9 +4,9 @@
       <% @themes.each_slice(4) do |themes| %>
         <div class="row">
       <% themes.each do |theme| %>   
-        <div id="theme_div"></div>
+        <div id="theme_div">
         <%= render partial: "theme", locals: { theme: theme} %>
-
+		</div>
       <% end %>
         </div>
         
