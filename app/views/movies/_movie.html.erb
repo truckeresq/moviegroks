@@ -1,7 +1,12 @@
  <div class="col-sm-6 col-md-3 col-lg-3">
         <%= link_to image_tag(movie.movie_image_url, size:"225x315"), movie %><br>
-        <p class="wrap"><%= movie.title %> (<%= movie.year %>)</p>
+        <p class="wrap"><%= movie.title %> (<%= movie.year %>)</p> 
+        <div class="tags"> 
+        <% movie.tag_list.each do |tag| %>
+       <span class="<%= cycle('first', 'second', 'third') %>"><%= link_to tag, tag_path(tag) %></span>
 
+        <% end %>
+        </div>
         <p class="movie_summary"><i>Synopsis:</i><br><%= movie.summary %></p>
           <% if signed_in? && current_user.admin? %>
           <span><%= link_to 'Edit', edit_movie_path(movie) %> | <%= link_to 'Delete', {:action => 'destroy', :id => movie.id}, method: :delete, data: {confirm: 'Are you sure you want to permanently delete this movie?'} %></span>

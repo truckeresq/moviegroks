@@ -1,6 +1,13 @@
 <title><%= full_title(yield(:title)) %></title>
 <h1>Movies</h1>
-
+<div id="tag_cloud">
+<h7><i>I want to see a movie that makes me feel...</i></h7>
+<br>
+<br>
+<% tag_cloud Movie.tag_counts, %w[s m l] do |tag, css_class| %>
+<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+<% end %>
+</div>
 <br>
  <% @movies.each_slice(4) do |movies| %>
     <div class="row" id="movies">

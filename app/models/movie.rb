@@ -3,6 +3,8 @@ class Movie < ActiveRecord::Base
 		has_many :groks
 		has_many :themes
 		validates :title, :presence => true, :uniqueness => true, on: :create
+		acts_as_taggable
+		acts_as_taggable_on :emotion
 include CustomSlugs
 custom_slugs_with(:title)
 

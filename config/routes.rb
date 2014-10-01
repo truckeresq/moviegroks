@@ -22,7 +22,7 @@ MovieGroks::Application.routes.draw do
   
   get 'user_grok' => 'users#user_grok'
   get 'processing_audio' => 'groks#processing_audio'
-
+  get 'tags/:tag', to: 'movies#index', as: :tag
 
 end
 

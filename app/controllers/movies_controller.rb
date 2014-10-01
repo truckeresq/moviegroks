@@ -4,7 +4,11 @@ class MoviesController < ApplicationController
   respond_to :json
 
 def index
+  if params[:tag]
+    @movies = Movie.tagged_with(params[:tag]).paginate(page: params[:page])
+  else
       @movies = Movie.paginate(page: params[:page])
+  end
     respond_to do |format|
       format.html
       format.json { render json: @movies, only: [:id, :year, :title, :movie_image_url, :movie_trailer_url] }
@@ -76,7 +80,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
 def movie_params
-     params.require(:movie).permit(:title, :summary, :movie_image_url, :movie_trailer_url, :year)
+     params.require(:movie).permit(:title, :summary, :movie_image_url, :movie_trailer_url, :year, :tag_list)
 end
 
 def admin_user

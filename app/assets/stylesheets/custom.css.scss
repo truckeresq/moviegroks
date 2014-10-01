@@ -790,12 +790,35 @@ aside {
   clear:left;
 }
 }
+.tags {
+  width: 225px;
+  display: inline-block;
+  overflow: hidden;
+  span.first {font-size: .9em; float: left; padding:5px; margin-left: 3px; background-color: lighten(#3CBBC9, 5%)};
+  span.second {font-size: .9em; float: left; padding:5px; margin-left: 3px; background-color: lighten(#2A2739, 35%)};
+  span.third {font-size: .9em; float: left; padding:5px; margin-left: 3px; background-color: lighten(#F73F31, 5%)};
+}
+ 
 p.movie_summary {
   font-size: 11px;
   background-color: lighten(#CFC22F, 10%);
   width: 225px;
   padding: 15px;
   text-align: justify;
+}
+
+#tag_cloud {
+  text-align: center;
+  width: 100%;
+  margin: 20px;
+  h7 {
+  color: #F73F31;
+  text-align: center;
+  }
+  line-height: 1.6em;
+  .s { font-family: "Acrom-Thin"; font-size: 0.8em; }
+  .m { font-family: "Acrom-Thin"; font-size: 1.2em; }
+  .l { font-family: "Acrom-Thin"; font-size: 1.8em; }
 }
 
 #ads {
