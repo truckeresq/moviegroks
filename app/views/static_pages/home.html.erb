@@ -1,7 +1,12 @@
 <title><%= full_title(yield(:title)) %></title>
 <div class="center">
   <h1>Moviegroks</h1>
-<h3>Because Good Stories Teach and Inspire</h3>
+<h3><i>Because Good Stories Make Us Feel</i> <sub><i class="fa fa-ellipsis-h"></sub></i></h3>
+<div id="tag_cloud">
+<% tag_cloud Movie.tag_counts, %w[s m l] do |tag, css_class| %>
+<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+<% end %>
+</div>
 <%= link_to "Learn More", about_path, class: "btn btn-learnmore" %>
 </div>
 <br>
